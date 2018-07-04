@@ -1,4 +1,4 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import Main from "../templates/main";
-ReactDOM.render(<Main />, document.getElementById("app"))
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Main from '../templates/main'
+ReactDOM.render(<Main />, document.getElementById('app'))
