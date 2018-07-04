@@ -1,0 +1,65 @@
+#grid {
+  .filterBar {
+    width: 100%;
+    display: block;
+    padding: 10px 0;
+    overflow: auto;
+    margin-bottom: 0;
+    select {
+      padding: 5px;
+      width: 100%;
+      background: none;
+      height: 34px;
+      -webkit-appearance: none;
+      -webkit-border-radius: 0px;
+    }
+    small {
+      font-weight: bold;
+    }
+    form {
+      input {
+        padding: 5px;
+        border:1px solid rgb(166, 166, 166);
+        width: 100%;
+      }
+    }
+  }
+  .images {
+    display: block;
+    overflow: auto;
+    img {
+      max-width: 100%;
+      margin: 0 auto;
+      display: block;
+    }
+    .modal {
+      display: block;
+      background: rgba(0,0,0,.4);
+      .tag {
+        display: inline-block;
+        margin-right: 5px;
+        color: #542e91;
+        cursor: pointer;
+        text-decoration: underline;
+      }
+      img {
+        max-height: 30vw;
+      }
+    }
+    .tileContainer {
+      padding: 0px;
+      margin-bottom: 0px;
+      .imageContainer {
+        height: 150px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+          max-width: 100%;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
