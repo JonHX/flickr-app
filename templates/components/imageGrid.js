@@ -133,7 +133,7 @@ class ImageGrid extends Component {
     const { searchTerm, error, page } = this.state
     const images = this.getImages()
     const loadingItem = this.getLoadingItem()
-    console.log('rerender')
+    
     return (
       <div id='grid' className='col-xs-12'>
         <div className='filterBar row'>

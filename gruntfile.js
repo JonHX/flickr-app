@@ -19,8 +19,7 @@ module.exports = function(grunt) {
       }
     });
 
-    // Load required modules
     grunt.loadNpmTasks('grunt-contrib-less');
-    // Task definitions
+
     grunt.registerTask('default',['less']);
 };
