@@ -38,7 +38,7 @@ class ImageGrid extends Component {
       }, 300)
     }
   }
-
+  // if loadingitem is within viewport update state for second page
   handleScroll (offset = 0) {
     const top = ReactDOM.findDOMNode(this.refs['loadingItem']).getBoundingClientRect().top
     if (top <= window.innerHeight) {
@@ -64,7 +64,7 @@ class ImageGrid extends Component {
       })
       .end(this.handleResults)
   }
-
+  // concat results array
   handleResults (err, res) {
     if (err || !res.body || !res.body.photos || !res.body.photos.photo.length) return this.toggleError()
     const { results } = this.state
@@ -72,18 +72,18 @@ class ImageGrid extends Component {
       results: results.concat(res.body.photos.photo)
     })
   }
-
+  // toggle error to keep tidy
   toggleError () {
     const { error } = this.state
     this.setState({
       error: !error
     })
   }
-
+  // return images from imageTile if present, else return error
   getImages () {
     const { results, error, searchTerm, page } = this.state
     if (error && !searchTerm) return (<h2>Please insert a search term</h2>)
-    if (error) return 'Something went wrong, please try again...'
+    if (error) return (<h2>Something went wrong, please try again...</h2>)
     if (!results || !results.length) return (<div ref={'loadingItem'}>{this.getLoadingItem()}</div>)
     return results.map((item) => {
       const { id, secret, title, farm, server } = item
@@ -94,16 +94,18 @@ class ImageGrid extends Component {
       )
     })
   }
-
+  // clear interval on key press to stop constant fetches
   clearTimer () {
     clearInterval(window.updateSearchTerm)
   }
-
+  // callback to update search term
   updateSearch (e) {
     const { error } = this.state
+    // reset if error is current
     if (error) this.toggleError()
     if (window.updateSearchTerm) this.clearTimer()
     const searchTerm = e.target.value || e.target.innerHTML.replace('#', '')
+    // reset results and pages as we're fetching new set of pages and results
     this.setState({
       searchTerm,
       results: [],
@@ -112,6 +114,8 @@ class ImageGrid extends Component {
   }
 
   updateSort (e) {
+    if (!e || !e.target || !e.target.value) return false
+    // reset results as we're re-populating with newly sorted ones.
     this.setState({
       sort: e.target.value,
       results: []
@@ -121,7 +125,7 @@ class ImageGrid extends Component {
   getLoadingItem () {
     const { loadingGif } = this.props
     return (
-      <div className="loadingGif">
+      <div className='loadingGif'>
         <div className='col-sm-3 tileContainer panel panel-default'>
           <div className='imageContainer'>
             <img src={loadingGif} alt={'loading'} />
@@ -132,9 +136,9 @@ class ImageGrid extends Component {
   }
 
   render () {
-    const { searchTerm, error, page } = this.state
+    const { searchTerm, error, page, results } = this.state
     const images = this.getImages()
-    
+
     return (
       <div id='grid' className='col-xs-12'>
         <div className='filterBar row'>
@@ -144,7 +148,7 @@ class ImageGrid extends Component {
         <div className='images'>
           {images}
         </div>
-        { images.length &&
+        { results.length >= 20 &&
           <div ref={'loadingItem'}>{this.getLoadingItem()}</div>
         }
       </div>

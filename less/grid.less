@@ -35,6 +35,19 @@
     .modal {
       display: block;
       background: rgba(0,0,0,.4);
+      .modal-dialog {
+        margin-top: 10px;
+      }
+      .scrollable {
+        overflow-y: scroll;
+        max-height: 500px;
+        max-height: 90vh;
+      }
+      .description {
+        text-align: left;
+        width: 100%;
+        display: block;
+      }
       .tag {
         display: inline-block;
         margin-right: 5px;
@@ -43,7 +56,10 @@
         text-decoration: underline;
       }
       img {
-        max-height: 30vw;
+        max-height: 20vw;
+        @media (max-width: @screen-xs-max) {
+          max-height: 80vw;
+        }
       }
     }
     .tileContainer {

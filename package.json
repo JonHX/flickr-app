@@ -9,8 +9,8 @@
     "start:prod": "webpack-dev-server --open --mode production --watch",
     "build": "grunt & webpack --mode development",
     "build:prod": "grunt && webpack --mode production --config webpack.prod.config.js --env.NODE_ENV=production --progress",
-    "lint": "./node_modules/.bin/eslint src templates",
-    "lintfix": "./node_modules/.bin/eslint src templates --ext .js,.jsx --fix"
+    "lint": "./node_modules/.bin/eslint src",
+    "lintfix": "./node_modules/.bin/eslint src --ext .js,.jsx --fix"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +19,7 @@
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015-ie": "^6.7.0",
     "babel-preset-react": "^6.24.1",
     "eslint": "^5.0.1",
     "eslint-config-standard": "^11.0.0",
