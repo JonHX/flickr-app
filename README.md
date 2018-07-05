@@ -1,7 +1,7 @@
 
 React Flickr Photo Feed
 =====
-[View project in GithubPages](https://jonhx.github.io/flickr-app/)
+[View project in Github Pages](https://jonhx.github.io/flickr-app/)
 ## Overview
 A super simple fully responsive single page react 16 app.
 
@@ -21,13 +21,16 @@ Instructions to install and start:
 3. `npm i`
 4. `npm run start` || `npm run start:prod` dev/production builds
 
-You can manually build using `npm run build`.
+You can manually build using `npm run build` or for production settings `npm run build:prod`.
 
 ## Built with
-[React 16](#)
-[Webpack 4](#)
-[babel](#)
-[LESS](#)
-[Grunt](#)
-[eslint](#)
-[Bootstrap](#)
+The app isn't purely built with love, I used these libaries too:
+
+- [React 16](#)
+- [Webpack 4](#)
+- [Webpack-dev-server](#)
+- [babel](#)
+- [LESS](#)
+- [Grunt](#)
+- [eslint](#)
+- [Bootstrap](#)

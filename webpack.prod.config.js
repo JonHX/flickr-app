@@ -2,6 +2,10 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const path = require("path");
 module.exports = {
+  output: {
+    path: path.resolve(__dirname, 'docs'),
+    filename: 'main.js'
+  },
   optimization: {
     minimizer: [
       new UglifyJsPlugin({
