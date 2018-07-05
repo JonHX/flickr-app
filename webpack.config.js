@@ -4,7 +4,7 @@ const path = require("path");
 module.exports = {
   output: {
     path: path.resolve(__dirname, 'docs'),
-    filename: 'main.js'
+    filename: './main.js'
   },
   module: {
     rules: [

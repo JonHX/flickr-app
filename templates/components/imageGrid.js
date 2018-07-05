@@ -82,9 +82,9 @@ class ImageGrid extends Component {
 
   getImages () {
     const { results, error, searchTerm, page } = this.state
-    if (error && !searchTerm) return 'Insert a search term'
+    if (error && !searchTerm) return (<h2>Please insert a search term</h2>)
     if (error) return 'Something went wrong, please try again...'
-    if (!results || !results.length) return 'Loading'
+    if (!results || !results.length) return (<div ref={'loadingItem'}>{this.getLoadingItem()}</div>)
     return results.map((item) => {
       const { id, secret, title, farm, server } = item
       if (!id || !secret || !title || !farm || !server) return null
@@ -121,9 +121,11 @@ class ImageGrid extends Component {
   getLoadingItem () {
     const { loadingGif } = this.props
     return (
-      <div className='col-sm-3 tileContainer panel panel-default'>
-        <div className='imageContainer'>
-          <img src={loadingGif} alt={'loading'} />
+      <div className="loadingGif">
+        <div className='col-sm-3 tileContainer panel panel-default'>
+          <div className='imageContainer'>
+            <img src={loadingGif} alt={'loading'} />
+          </div>
         </div>
       </div>
     )
@@ -132,7 +134,6 @@ class ImageGrid extends Component {
   render () {
     const { searchTerm, error, page } = this.state
     const images = this.getImages()
-    const loadingItem = this.getLoadingItem()
     
     return (
       <div id='grid' className='col-xs-12'>
@@ -143,8 +144,8 @@ class ImageGrid extends Component {
         <div className='images'>
           {images}
         </div>
-        { images !== 'loading' &&
-          <div ref={'loadingItem'}>{loadingItem}</div>
+        { images.length &&
+          <div ref={'loadingItem'}>{this.getLoadingItem()}</div>
         }
       </div>
     )
